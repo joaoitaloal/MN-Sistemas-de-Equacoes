@@ -9,7 +9,7 @@ class Gauss {
         Gauss(Matrix m, vector <double> b);
         
         void eliminar_gauss();
-        void iterar(int i, float x);
+        virtual void iterar(int i, float x) = 0;
     protected:
         Matrix mat;
         std::vector <double> b;
