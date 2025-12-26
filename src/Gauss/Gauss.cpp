@@ -1,27 +1,36 @@
 #include <iostream>
 #include "Gauss.h"
+#include "../Matriz/Matriz.h"
 
-Gauss::Gauss(std::vector<std::vector<float>> m, std::vector<float> b)
-: m(m), b(b), solucao(m.size()) {}
+Gauss::Gauss(Matriz m, std::vector<double> b)
+: mat(m), b(b) {}
 
-std::vector<float> Gauss::get_solucao(){
-    return solucao;
-}
+void Gauss::eliminar_gauss(){
+    std::pair p = mat.get_size();
+    int n = p.first;
+    int m = p.second;
+    int num_trocas = 0;
 
-void Gauss::iterar(){
-    int n = m.size();
     for (int i=0; i < n-1; i++){
+        // pivotação
+        int maior = i;
+        
+        for(int j = i + 1; j < n; ++j){
+            if (abs(mat.at(i,j)) > abs(mat.at(i, maior))) maior = j;
+        }
+
+        if (maior != i){
+            num_trocas++;
+            mat.switch_row(i, maior);
+        }
+
         for (int k=i+1; k < n; k++){
-            if (m[i][i]!=0){
-                float x = -m[k][i]/m[i][i];
-                m[k][i] = 0;
-                for (int j=i+1; j < n; j++){
-                    m[k][j] = m[k][j] + x*m[i][j];
-                }
-                b[k] = b[k] + x*b[i];
-            } else {
-                return;
-            }
+            float x = -mat.at(k, i)/mat.at(i, i);
+            mat.set(k, i, 0);
+
+            // iteracao respectiva
+            iterar(i, x);
+            b[k] = b[k] + x*b[i];
         }
     }
 }

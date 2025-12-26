@@ -1,4 +1,4 @@
-#include "matriz.h"
+#include "Matriz.h"
 
 Matriz::Matriz(int s){
     matrix = vector<vector<double>>(s+1, vector<double>(s+1));
