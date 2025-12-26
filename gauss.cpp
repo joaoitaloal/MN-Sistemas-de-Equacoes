@@ -29,7 +29,7 @@ void print_matrix(matrix &M) {
         for (size_t j = 1; j <= c; j++) {
             cout << setw(8) << M[i][j] << " "[j == c];
         }
-        cout << setw(8) << "]" << endl;
+        cout << "  ]" << endl;
     }
 }
 
@@ -124,20 +124,23 @@ int main() {
     for (size_t i = 1; i <= s; i++) {
         B[i][1] = aux_B[i][1];
     }
+    cout << "MATRIZES INICIAIS" << endl << endl;
     cout << "A:" << endl;
     print_matrix(A);
     cout << endl;
     cout << "B:" << endl;
     print_matrix(B);
-    cout << endl;
+    cout << "----------------" << endl;
     gauss(A, B);
+    cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS" << endl << endl;
     cout << "A:" << endl;
     print_matrix(A);
     cout << endl;
     cout << "B:" << endl;
     print_matrix(B);
-    cout << endl;
+    cout << "----------------" << endl;
     gauss_jordan(A, B);
+    cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS-JORDAN" << endl << endl;
     cout << "A:" << endl;
     print_matrix(A);
     cout << endl;
