@@ -8,7 +8,6 @@ Matrix::Matrix(int s, int t){
     matrix = vector<vector<double>>(s+1, vector<double>(t+1));
     matrix_size = {s, t};
 }
-
 Matrix::Matrix(std::vector<std::vector<double>> matrix_){
     matrix = matrix_;
 
@@ -31,10 +30,12 @@ void Matrix::switch_row(int x, int y){
 
     Matrix aux(1, c);
 
-    for (size_t i = 1; i <= c; i++) {
-        aux.set(1, i, at(x, i));
+    for (size_t i = 0; i < c; i++) {
+        // Esses dois 0 embaixo eram 1 antes, não sei se mudei certo,
+        // se algo der errado por aqui analisar isso ai
+        aux.set(0, i, at(x, i));
         set(x, i, at(y, i));
-        set(y, i, aux.at(1, i));
+        set(y, i, aux.at(0, i));
     }
 }
 
@@ -48,9 +49,9 @@ double Matrix::at(int x, int y){
 
 void Matrix::print() {
     cout << fixed << setprecision(PRINT_PRECISION_MATRIX);
-    for (int i = 1; i <= matrix_size.first; i++) {
+    for (int i = 0; i < matrix_size.first; i++) {
         cout << "[";
-        for (int j = 1; j <= matrix_size.second; j++) {
+        for (int j = 0; j < matrix_size.second; j++) {
             cout << setw(PRINT_W_VALUES) << at(i, j) << " "[j == matrix_size.second];
         }
         cout << "  ]" << endl;
