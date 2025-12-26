@@ -6,13 +6,13 @@
 
 class Gauss {
     public:
-        Gauss(Matrix m, vector <double> b);
+        Gauss(Matrix m, Matrix b);
         
         void eliminar_gauss();
         virtual void iterar(int i, double x) = 0;
     protected:
         Matrix mat;
-        std::vector <double> b;
+        Matrix b;
 };
 
 #endif // MN_GAUSS_H
