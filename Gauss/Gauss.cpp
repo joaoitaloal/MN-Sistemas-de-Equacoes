@@ -24,14 +24,4 @@ void Gauss::iterar(){
             }
         }
     }
-    float soma;
-    solucao[n-1] = b[n-1]/m[n-1][n-1];
-    for (int i = n-2; i >= 0; i++){
-        soma = 0;
-        for (int j = i+1; j < n; j++){
-            soma = soma + m[i][j] * solucao[j];
-        }
-        solucao[i] = (b[i]-soma)/m[i][i];
-    }
-
 }
