@@ -3,5 +3,5 @@
 #include "../Matrix/Matrix.h"
 
 void GaussJordan::iterar(int i, double x){
-
+    
 }

@@ -2,7 +2,7 @@
 #include "Gauss.h"
 #include "../Matrix/Matrix.h"
 
-Gauss::Gauss(Matrix m, std::vector<double> b)
+Gauss::Gauss(Matrix m, Matrix b)
 : mat(m), b(b) {}
 
 void Gauss::eliminar_gauss(){
@@ -30,7 +30,7 @@ void Gauss::eliminar_gauss(){
 
             // iteracao respectiva
             iterar(i, x);
-            b[k] = b[k] + x*b[i];
+            b.set(k, 1, b.at(k, 1) + x * b.at(i, 1));
         }
     }
 }
