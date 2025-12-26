@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Matriz/Matriz.h"
+#include "Matrix/Matrix.h"
 
 int main(){
     Matrix A({

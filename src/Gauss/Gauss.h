@@ -1,5 +1,5 @@
-#ifndef GAUSS
-#define GAUSS
+#ifndef MN_GAUSS_H
+#define MN_GAUSS_H
 
 #include <vector>
 #include "../Matrix/Matrix.h"
@@ -15,4 +15,4 @@ class Gauss {
         std::vector <double> b;
 };
 
-#endif 
+#endif // MN_GAUSS_H
