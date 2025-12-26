@@ -10,6 +10,9 @@ class Gauss {
         
         void eliminar_gauss();
         virtual void iterar(int i) = 0;
+
+        void print_mat();
+        void print_b();
     protected:
         Matrix mat;
         Matrix b;

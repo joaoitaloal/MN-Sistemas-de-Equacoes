@@ -9,10 +9,10 @@ void GaussNormal::iterar(int i){
         double x = -mat.at(k, i)/mat.at(i, i);
         mat.set(k, i, 0);
 
-        for (size_t j = i; j < n; j++) {
+        for (int j = i; j < n; j++) {
             mat.set(k, j, mat.at(k, j) - (x * mat.at(i, j)));
         }
             
-        b.set(k, 1, b.at(k, 1) + x * b.at(i, 1));
+        b.set(k, 0, b.at(k, 0) + x * b.at(i, 0));
     }
 }

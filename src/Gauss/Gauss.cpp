@@ -27,3 +27,11 @@ void Gauss::eliminar_gauss(){
         iterar(i);
     }
 }
+
+void Gauss::print_mat(){
+    mat.print();
+}
+
+void Gauss::print_b(){
+    b.print();
+}
