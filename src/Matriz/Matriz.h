@@ -10,10 +10,13 @@
 
 using namespace std;
 
-class Matriz {
+class Matrix {
     public:
-        Matriz(int s);
-        Matriz(int s, int t);
+        Matrix(int s);
+        Matrix(int s, int t);
+
+        // Copia todo o vetor de entrada
+        Matrix(std::vector <std::vector <double>> matrix_);
 
         pair<int, int> get_size();
 
