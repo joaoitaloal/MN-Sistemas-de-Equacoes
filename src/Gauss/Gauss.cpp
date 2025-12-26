@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Gauss.h"
 
-Gauss::Gauss(std::vector<std::vector<float>> m, std::vector<float> b)
+/*Gauss::Gauss(std::vector<std::vector<float>> m, std::vector<float> b)
 : m(m), b(b), solucao(m.size()) {}
 
 std::vector<float> Gauss::get_solucao(){
@@ -24,4 +24,4 @@ void Gauss::iterar(){
             }
         }
     }
-}
+}*/

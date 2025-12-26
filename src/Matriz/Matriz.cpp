@@ -16,6 +16,8 @@ Matrix::Matrix(std::vector<std::vector<double>> matrix_){
     matrix_size = {matrix.size(), matrix.at(0).size()};
 }
 
+// first: linhas
+// second: colunas
 pair<int, int> Matrix::get_size(){
     return matrix_size;
 }
@@ -46,9 +48,9 @@ double Matrix::at(int x, int y){
 
 void Matrix::print() {
     cout << fixed << setprecision(PRINT_PRECISION_MATRIX);
-    for (size_t i = 1; i <= matrix_size.first; i++) {
+    for (int i = 1; i <= matrix_size.first; i++) {
         cout << "[";
-        for (size_t j = 1; j <= matrix_size.second; j++) {
+        for (int j = 1; j <= matrix_size.second; j++) {
             cout << setw(PRINT_W_VALUES) << at(i, j) << " "[j == matrix_size.second];
         }
         cout << "  ]" << endl;

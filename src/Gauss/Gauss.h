@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "../Matriz/matriz.h"
-
+/*
 class Gauss {
     public:
         Gauss(Matriz m, Matriz b);
@@ -13,5 +13,5 @@ class Gauss {
         Matriz m;
         Matriz b;
 };
-
+*/
 #endif 
