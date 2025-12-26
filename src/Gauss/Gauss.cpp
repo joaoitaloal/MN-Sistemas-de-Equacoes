@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Gauss.h"
-#include "../Matriz/Matriz.h"
+#include "../Matrix/Matrix.h"
 
-Gauss::Gauss(Matriz m, std::vector<double> b)
+Gauss::Gauss(Matrix m, std::vector<double> b)
 : mat(m), b(b) {}
 
 void Gauss::eliminar_gauss(){
@@ -33,4 +33,4 @@ void Gauss::eliminar_gauss(){
             b[k] = b[k] + x*b[i];
         }
     }
-}*/
+}
