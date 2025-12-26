@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Matrix/Matrix.h"
 
+#include "Gauss/GaussNormal.h"
+#include "Gauss/GaussJordan.h"
+
 int main(){
     Matrix A({
         {2,  1,  1,  0},
@@ -23,7 +26,7 @@ int main(){
     cout << "B:" << endl;
     B.print();
     cout << "----------------" << endl;
-    //gauss(A, B);
+    GaussNormal gauss_normal(A, B);
     cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS" << endl << endl;
     cout << "A:" << endl;
     A.print();
@@ -31,7 +34,7 @@ int main(){
     cout << "B:" << endl;
     B.print();
     cout << "----------------" << endl;
-    //gauss_jordan(A, B);
+    GaussJordan gauss_jordan(A, B);
     cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS-JORDAN" << endl << endl;
     cout << "A:" << endl;
     A.print();
