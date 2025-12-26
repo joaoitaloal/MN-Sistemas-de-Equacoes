@@ -33,4 +33,4 @@ void Gauss::eliminar_gauss(){
             b[k] = b[k] + x*b[i];
         }
     }
-}
+}*/

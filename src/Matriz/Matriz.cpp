@@ -1,15 +1,24 @@
 #include "Matriz.h"
 
-Matriz::Matriz(int s){
+Matrix::Matrix(int s){
     matrix = vector<vector<double>>(s+1, vector<double>(s+1));
     matrix_size = {s, s};
 }
-Matriz::Matriz(int s, int t){
+Matrix::Matrix(int s, int t){
     matrix = vector<vector<double>>(s+1, vector<double>(t+1));
     matrix_size = {s, t};
 }
 
-pair<int, int> Matriz::get_size(){
+Matrix::Matrix(std::vector<std::vector<double>> matrix_){
+    matrix = matrix_;
+
+    // Assumindo que o vetor recebido é uma matriz, obviamente
+    matrix_size = {matrix.size(), matrix.at(0).size()};
+}
+
+// first: linhas
+// second: colunas
+pair<int, int> Matrix::get_size(){
     return matrix_size;
 }
 
@@ -17,10 +26,10 @@ pair<int, int> Matriz::get_size(){
 
 }*/
 
-void Matriz::switch_row(int x, int y){
+void Matrix::switch_row(int x, int y){
     size_t c = matrix_size.second;
 
-    Matriz aux(1, c);
+    Matrix aux(1, c);
 
     for (size_t i = 1; i <= c; i++) {
         aux.set(1, i, at(x, i));
@@ -29,19 +38,19 @@ void Matriz::switch_row(int x, int y){
     }
 }
 
-void Matriz::set(int x, int y, double val){
+void Matrix::set(int x, int y, double val){
     matrix.at(x).at(y) = val;
 }
 
-double Matriz::at(int x, int y){
+double Matrix::at(int x, int y){
     return matrix.at(x).at(y);
 }
 
-void Matriz::print() {
+void Matrix::print() {
     cout << fixed << setprecision(PRINT_PRECISION_MATRIX);
-    for (size_t i = 1; i <= matrix_size.first; i++) {
+    for (int i = 1; i <= matrix_size.first; i++) {
         cout << "[";
-        for (size_t j = 1; j <= matrix_size.second; j++) {
+        for (int j = 1; j <= matrix_size.second; j++) {
             cout << setw(PRINT_W_VALUES) << at(i, j) << " "[j == matrix_size.second];
         }
         cout << "  ]" << endl;

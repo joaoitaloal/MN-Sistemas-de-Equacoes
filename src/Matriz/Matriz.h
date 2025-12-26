@@ -10,10 +10,16 @@
 
 using namespace std;
 
-class Matriz {
+class Matrix {
     public:
-        Matriz(int s);
-        Matriz(int s, int t);
+        Matrix(int s);
+        Matrix(int s, int t);
+
+        // Copia todo o vetor de entrada
+        Matrix(std::vector <std::vector <double>> matrix_);
+        
+        //void switch_col(int x, int y);
+        void switch_row(int x, int y);
 
         pair<int, int> get_size();
 
@@ -26,8 +32,6 @@ class Matriz {
         std::vector <std::vector <double>> matrix;
         pair<int, int> matrix_size;
 
-        //void switch_col(int x, int y);
-        void switch_row(int x, int y);
 };
 
 #endif // MN_MATRIX_H
