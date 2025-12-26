@@ -2,17 +2,16 @@
 #define GAUSS
 
 #include <vector>
+#include "../Matriz/matriz.h"
 
 class Gauss {
     public:
-        Gauss(std::vector<std::vector<float>> m, std::vector<float> b);
+        Gauss(Matriz m, Matriz b);
         
-        void iterar();
-        std::vector<float> get_solucao();
+        void iterar(int i, float x);
     protected:
-        std::vector<std::vector<float>> m;
-        std::vector<float> b;
-        std::vector<float> solucao;
+        Matriz m;
+        Matriz b;
 };
 
 #endif 
