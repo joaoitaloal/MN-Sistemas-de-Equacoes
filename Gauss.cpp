@@ -1,5 +1,6 @@
-#include <iostream>
 #include "Gauss.h"
+#include <iostream>
+
 
 Gauss::Gauss(std::vector<std::vector<float>> m, std::vector<float> b)
 : m(m), b(b), solucao(m.size()) {}
