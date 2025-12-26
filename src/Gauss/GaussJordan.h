@@ -5,7 +5,7 @@
 
 class GaussJordan : public Gauss{
     public:
-        void iterar(int i, double x) override;
+        void iterar(int i) override;
 };
 
 #endif // MN_GAUSSJORDAN_H

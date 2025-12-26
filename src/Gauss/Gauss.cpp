@@ -24,13 +24,6 @@ void Gauss::eliminar_gauss(){
             mat.switch_row(i, maior);
         }
 
-        for (int k=i+1; k < n; k++){
-            float x = -mat.at(k, i)/mat.at(i, i);
-            mat.set(k, i, 0);
-
-            // iteracao respectiva
-            iterar(i, x);
-            b.set(k, 1, b.at(k, 1) + x * b.at(i, 1));
-        }
+        iterar(i);
     }
 }

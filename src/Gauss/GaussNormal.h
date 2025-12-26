@@ -5,7 +5,7 @@
 
 class GaussNormal : public Gauss {
     public:
-        void iterar(int i, float x) override;
+        void iterar(int i) override;
 };
 
 #endif // MN_GAUSSNORMAL_H

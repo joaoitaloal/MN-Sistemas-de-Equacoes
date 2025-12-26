@@ -9,7 +9,7 @@ class Gauss {
         Gauss(Matrix m, Matrix b);
         
         void eliminar_gauss();
-        virtual void iterar(int i, double x) = 0;
+        virtual void iterar(int i) = 0;
     protected:
         Matrix mat;
         Matrix b;
