@@ -1,22 +1,16 @@
-#include <iostream>
-#include "Matrix/Matrix.h"
-
 #include "Gauss/GaussNormal.h"
 #include "Gauss/GaussJordan.h"
 
 int main(){
     Matrix A({
-        {2,  1,  1,  0},
-        {4,  3,  3,  1},
-        {8,  7,  9,  5},
-        {6,  7,  9,  8}
+        {10,  1,  1},
+        {1,  10,  1},
+        {1,  1,  10}
     });
     Matrix B({
-        {1},
-        {2},
-        {3},
-        {4},
-        {5}
+        {12},
+        {12},
+        {12}
     });
     
     cout << "MATRIZES INICIAIS" << endl << endl;

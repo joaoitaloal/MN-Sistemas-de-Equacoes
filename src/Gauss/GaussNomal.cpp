@@ -1,5 +1,4 @@
 #include "GaussNormal.h"
-#include "../Matrix/Matrix.h"
 
 void GaussNormal::iterar(int i){
     int n = mat.get_size().first;

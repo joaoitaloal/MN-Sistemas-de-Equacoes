@@ -15,10 +15,12 @@ class Matrix {
         Matrix(int s);
         Matrix(int s, int t);
         // Copia todo o vetor de entrada
-        Matrix(std::vector <std::vector <double>> matrix_);
+        Matrix(vector <vector <double>> matrix_);
 
         //void switch_col(int x, int y);
         void switch_row(int x, int y);
+        
+        void change_col(int x, vector<double> column);
 
         pair<int, int> get_size();
 
@@ -28,7 +30,7 @@ class Matrix {
         void print();
 
     protected:
-        std::vector <std::vector <double>> matrix;
+        vector <vector <double>> matrix;
         pair<int, int> matrix_size;
 
 };

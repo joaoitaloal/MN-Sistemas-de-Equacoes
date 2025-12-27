@@ -8,7 +8,7 @@ Matrix::Matrix(int s, int t){
     matrix = vector<vector<double>>(s+1, vector<double>(t+1));
     matrix_size = {s, t};
 }
-Matrix::Matrix(std::vector<std::vector<double>> matrix_){
+Matrix::Matrix(vector<vector<double>> matrix_){
     matrix = matrix_;
 
     // Assumindo que o vetor recebido é uma matriz, obviamente
@@ -36,6 +36,12 @@ void Matrix::switch_row(int x, int y){
         aux.set(0, i, at(x, i));
         set(x, i, at(y, i));
         set(y, i, aux.at(0, i));
+    }
+}
+
+void Matrix::change_col(int x, vector<double> column){
+    for(int r = 0; r < matrix_size.first; r++){
+        set(r, x, column.at(r));
     }
 }
 

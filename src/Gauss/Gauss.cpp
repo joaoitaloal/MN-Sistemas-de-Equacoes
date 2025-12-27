@@ -1,6 +1,4 @@
-#include <iostream>
 #include "Gauss.h"
-#include "../Matrix/Matrix.h"
 
 Gauss::Gauss(Matrix m, Matrix b)
 : mat(m), b(b) {}
@@ -8,7 +6,6 @@ Gauss::Gauss(Matrix m, Matrix b)
 double Gauss::eliminar_gauss(){
     std::pair p = mat.get_size();
     int n = p.first;
-    int m = p.second;
     int num_trocas = 0;
 
     for (int i=0; i < n; i++){
