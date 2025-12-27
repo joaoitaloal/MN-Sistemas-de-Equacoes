@@ -8,7 +8,7 @@ class Gauss {
     public:
         Gauss(Matrix m, Matrix b);
         
-        void eliminar_gauss();
+        double eliminar_gauss();
         virtual void iterar(int i) = 0;
 
         void print_mat();

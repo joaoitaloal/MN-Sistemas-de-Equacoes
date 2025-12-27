@@ -5,13 +5,13 @@
 Gauss::Gauss(Matrix m, Matrix b)
 : mat(m), b(b) {}
 
-void Gauss::eliminar_gauss(){
+double Gauss::eliminar_gauss(){
     std::pair p = mat.get_size();
     int n = p.first;
     int m = p.second;
     int num_trocas = 0;
 
-    for (int i=0; i < n-1; i++){
+    for (int i=0; i < n; i++){
         // pivotação
         int maior = i;
         
@@ -26,6 +26,13 @@ void Gauss::eliminar_gauss(){
 
         iterar(i);
     }
+
+    double determin;
+    if(num_trocas % 2 == 0) determin = 1;
+    else determin = -1;
+
+    for(int i = 0; i < n; i++) determin *= mat.at(i, i);
+    return determin;
 }
 
 void Gauss::print_mat(){
