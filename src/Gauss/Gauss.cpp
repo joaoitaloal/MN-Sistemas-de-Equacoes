@@ -4,7 +4,7 @@ Gauss::Gauss(Matrix m, Matrix b)
 : mat(m), b(b) {}
 
 double Gauss::eliminar_gauss(){
-    std::pair p = mat.get_size();
+    std::pair<int, int> p = mat.get_size();
     int n = p.first;
     int num_trocas = 0;
 
@@ -13,7 +13,7 @@ double Gauss::eliminar_gauss(){
         int maior = i;
         
         for(int j = i + 1; j < n; ++j){
-            if (abs(mat.at(i,j)) > abs(mat.at(i, maior))) maior = j;
+            if (mat.abs(mat.at(j, i)) > mat.abs(mat.at(maior, i))) maior = j;
         }
 
         if (maior != i){
