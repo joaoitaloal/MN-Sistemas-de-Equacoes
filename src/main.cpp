@@ -1,4 +1,3 @@
-#include "Gauss/GaussNormal.h"
 #include "Gauss/GaussJordan.h"
 
 int main(){
@@ -20,23 +19,27 @@ int main(){
     cout << "B:" << endl;
     B.print();
     cout << "----------------" << endl;
-    GaussNormal gauss_normal(A, B);
-    gauss_normal.eliminar_gauss();
+    Gauss gauss_normal(A, B);
+    double det_normal = gauss_normal.eliminar_gauss();
     cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS" << endl << endl;
     cout << "A:" << endl;
     gauss_normal.print_mat();
     cout << endl;
     cout << "B:" << endl;
     gauss_normal.print_b();
+    cout << endl;
+    cout << "DETERMINANTE: " << det_normal << endl;
     cout << "----------------" << endl;
     GaussJordan gauss_jordan(A, B);
-    gauss_jordan.eliminar_gauss();
+    double det_jordan = gauss_jordan.eliminar_gauss();
     cout << "MATRIZES APÓS A APLICAÇÃO DO MÉTODO DE GAUSS-JORDAN" << endl << endl;
     cout << "A:" << endl;
     gauss_jordan.print_mat();
     cout << endl;
     cout << "B:" << endl;
     gauss_jordan.print_b();
+    cout << endl;
+    cout << "DETERMINANTE: " << det_jordan << endl;
 
     return 0;
 }

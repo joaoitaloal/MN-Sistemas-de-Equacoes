@@ -4,16 +4,15 @@ Gauss::Gauss(Matrix m, Matrix b)
 : mat(m), b(b) {}
 
 double Gauss::eliminar_gauss(){
-    std::pair<int, int> p = mat.get_size();
-    int n = p.first;
+    int n = mat.get_size().first;
     int num_trocas = 0;
 
-    for (int i=0; i < n; i++){
+    for (int i = 0; i < n; i++){
         // pivotação
         int maior = i;
         
-        for(int j = i + 1; j < n; ++j){
-            if (mat.abs(mat.at(j, i)) > mat.abs(mat.at(maior, i))) maior = j;
+        for(int j = i + 1; j < n; j++){
+            if (abs(mat.at(j, i)) > abs(mat.at(maior, i))) maior = j;
         }
 
         if (maior != i){
@@ -21,7 +20,18 @@ double Gauss::eliminar_gauss(){
             mat.switch_row(i, maior);
         }
 
-        iterar(i);
+        // Antigo iterar
+        for (int k = ini_intervalo(i); k < n; k++){
+            if(k == i) continue;
+            double x = -mat.at(k, i)/mat.at(i, i);
+            mat.set(k, i, 0);
+
+            for (int j = i + 1; j < n; j++) {
+                mat.set(k, j, mat.at(k, j) + (x * mat.at(i, j)));
+            }
+                
+            b.set(k, 0, b.at(k, 0) + x * b.at(i, 0));
+        }
     }
 
     double determin;
@@ -38,4 +48,8 @@ void Gauss::print_mat(){
 
 void Gauss::print_b(){
     b.print();
+}
+
+int Gauss::ini_intervalo(int i){
+    return i+1;
 }
