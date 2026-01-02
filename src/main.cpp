@@ -2,9 +2,9 @@
 
 int main(){
     bool continua = true;
-    int cont = 1;
+    int contador = 1;
     while(continua){
-        cout << "------ Teste " << cont << " ------\n";
+        cout << "-------------------- Teste " << contador << " --------------------\n";
         int n, a;
         cout << "Digite o número de cordas e o parametro A (N A): ";
         cin >> n >> a;
@@ -39,6 +39,8 @@ int main(){
         cin >> c;
         if (c == 'N') continua = false;
         cout << "\n";
+
+        contador++;
     }
     return 0;
 }
