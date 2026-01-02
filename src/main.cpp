@@ -30,8 +30,17 @@ int main(){
            C.set(i, 0, entrada);
         }
         cout << "\n";
-        // Processamento
 
+        Cramer cramer(C, V, a);
+        vector<double> deslocamentos = cramer.deslocamento_normal();
+        vector<double> amplitudes = cramer.amplitude_normal();
+        vector<double> rompimentos;
+
+        for (int i = 0; i < n; i++) {
+            if (amplitudes[i] > 3.0) {
+                rompimentos.push_back(i);
+            }
+        }
 
         // Saída
 
