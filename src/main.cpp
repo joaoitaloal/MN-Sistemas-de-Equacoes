@@ -1,4 +1,5 @@
 #include "Gauss/GaussJordan.h"
+#include "Cramer/Cramer.h"
 
 int main(){
     bool continua = true;
@@ -41,8 +42,28 @@ int main(){
                 rompimentos.push_back(i);
             }
         }
-
-        // Saída
+        
+        cout << "-------------------- DESLOCAMENTOS --------------------" << endl << endl;
+        cout << "[" << endl << endl;
+        for (int i = 0; i < deslocamentos.size(); i++){
+            cout << deslocamentos[i] << " ";
+        }
+        cout << "]" << endl << endl;
+        cout << "-------------------- AMPLITUDES --------------------" << endl << endl;
+        cout << "[" << endl << endl;
+        for (int i = 0; i < amplitudes.size(); i++){
+            cout << amplitudes[i] << " ";
+        }
+        cout << "]" << endl << endl;
+        if (rompimentos.size() > 0){
+            cout << "Houve rompimentos nas cordas: ";
+            for (int i = 0; i < rompimentos.size(); i++){
+                cout << rompimentos[i] + 1 << " ";
+            }
+        } else {
+            cout << "Não houve rompimentos nas cordas" << endl;
+        }
+        cout << endl;
 
         char c;
         cout << "Você deseja continuar? [S/N]: ";
