@@ -7,21 +7,47 @@ double Gauss::eliminar_gauss(){
     std::pair<int, int> p = mat.get_size();
     int n = p.first;
     int num_trocas = 0;
+    double eps = 1e-12;
 
     for (int i=0; i < n; i++){
         // pivotação
         int maior = i;
         
         for(int j = i + 1; j < n; ++j){
-            if (mat.abs(mat.at(j, i)) > mat.abs(mat.at(maior, i))) maior = j;
+            if (abs(mat.at(j, i)) > abs(mat.at(maior, i))) maior = j;
+        }
+        
+        if (abs(mat.at(maior, i)) < eps){ //evitar divisao por 0 (ou numeros muito proximos)
+            throw runtime_error("Erro: Pivo = 0");
         }
 
         if (maior != i){
             num_trocas++;
             mat.switch_row(i, maior);
+            b.switch_row(i, maior);
         }
 
         iterar(i);
+    }
+    //tratamento de erro
+    int postoA = 0; //quantidade de linhas linearmente independentes
+    for (int i = 0; i < n; i++) {
+        bool linha_zero = true;
+        for (int j = 0; j < n; j++){
+            if (abs(mat.at(i,j)) > eps){
+                linha_zero = false;
+                break;
+            }
+        }
+
+        if (!linha_zero) postoA++;
+        else if (abs(b.at(i,0)) > eps){ //0 + 0 + ... + 0 = (c > 0) -> inconsistente
+            throw runtime_error("Erro: Sistema inconsistente");
+        }
+    }
+
+    if (postoA < n) { //0 + 0 + ... + 0 = 0 -> infinitas solucoes
+        throw runtime_error("Erro: Sistema com infinitas solucoes");
     }
 
     double determin;

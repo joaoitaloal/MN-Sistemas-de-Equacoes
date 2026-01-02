@@ -53,11 +53,6 @@ double Matrix::at(int x, int y){
     return matrix.at(x).at(y);
 }
 
-double Matrix::abs(double x){
-    if(x < 0) return x * -1;
-    else return x;
-}
-
 void Matrix::print() {
     cout << fixed << setprecision(PRINT_PRECISION_MATRIX);
     for (int i = 0; i < matrix_size.first; i++) {

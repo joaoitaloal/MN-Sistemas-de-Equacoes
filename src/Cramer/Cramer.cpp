@@ -12,60 +12,79 @@ vector<double> Cramer::aux(Matrix& b){ //recebe a matriz b (dos termos independe
     return ret;
 }
 
-vector<double> Cramer::deslocamento_normal(){
-    int n = m.get_size().first;
-    vector<double> di(n);
+double Cramer::calc_det(Matrix& mat, bool usar_jordan){
+    //simular o vetor dos termos independentes so com 0 para que
+    //so a matriz de coeficientes determine inconsistencias
+    int n = mat.get_size().first;
+    Matrix b_zero(n, 1);
+    for (int i = 0; i < n; i++)
+        b_zero.set(i, 0, 0.0);
 
-    GaussNormal gn(m, b);
-    double det = gn.eliminar_gauss();
+    Matrix mat_copia = mat;
+
+    if(usar_jordan){
+        GaussJordan gj(mat_copia, b_zero);
+        return gj.eliminar_gauss();
+    }
+    else{
+        GaussNormal gn(mat_copia, b_zero);
+        return gn.eliminar_gauss();
+    }
+}
+
+vector<double> Cramer::calc_desloc(bool usar_jordan){
+    int n = m.get_size().first;
+    vector<double> di(n, 0);
+
+    double det;
+    try {
+        det = calc_det(m, usar_jordan);
+    } catch (const exception& e) {
+        throw runtime_error(string("Falha ao calcular det(C): ") + e.what());
+    }
+
+    if (abs(det) < 1e-12) {
+        throw runtime_error("Erro: determinante = 0");
+    }
 
     for(int i = 0 ; i < n ; i++){
         Matrix m_aux = m; //para nao alterar na matriz original
         m_aux.change_col(i, b_vetor);
-        GaussNormal gn_aux(m_aux, b);
-        di[i] = gn_aux.eliminar_gauss() / det;
-    }
 
+        double det_i;
+        try{
+            det_i = calc_det(m_aux, usar_jordan);
+            di[i] = det_i / det;
+        }
+        catch (const exception& e){
+            throw runtime_error(string("Falha ao calcular det(C_") + to_string(i+1) + "): " + e.what());
+        }
+    }
     return di;
 }
 
-vector<double> Cramer::amplitude_normal(){
-    vector<double> di = deslocamento_normal();
-    int n = di.size();
-    vector<double> amp(n);
-
-    for(int i = 0 ; i < di.size() ; i++){
-        amp[i] = a*di[i];
-    }
-    
-    return amp;
+vector<double> Cramer::deslocamento_normal(){
+    return calc_desloc(false);
 }
 
 vector<double> Cramer::deslocamento_jordan(){
-    int n = m.get_size().first;
-    vector<double> di(n);
+    return calc_desloc(true);
+}
 
-    GaussJordan gj(m, b);
-    double det = gj.eliminar_gauss();
+vector<double> Cramer::calc_amplitude(bool usar_jordan){
+    vector<double> di = calc_desloc(usar_jordan);
+    int n = di.size();
+    vector<double> amp(n);
+    for(int i = 0 ; i < n ; i++)
+        amp[i] = a*di[i];
+    
+    return amp;
+}
 
-    for(int i = 0 ; i < n ; i++){
-        Matrix m_aux = m; //para nao alterar na matriz original
-        m_aux.change_col(i, b_vetor);
-        GaussJordan gj_aux(m_aux, b);
-        di[i] = gj_aux.eliminar_gauss() / det;
-    }
-
-    return di;
+vector<double> Cramer::amplitude_normal(){
+    return calc_amplitude(false);
 }
 
 vector<double> Cramer::amplitude_jordan(){
-    vector<double> di = deslocamento_jordan();
-    int n = di.size();
-    vector<double> amp(n);
-
-    for(int i = 0 ; i < di.size() ; i++){
-        amp[i] = a*di[i];
-    }
-    
-    return amp;
+    return calc_amplitude(true);
 }

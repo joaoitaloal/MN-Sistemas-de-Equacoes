@@ -21,6 +21,9 @@ class Cramer {
         double a;
 
         vector<double> aux(Matrix& b); //recebe a matriz b (dos termos independentes) e transforma em um vetor
+        double calc_det(Matrix& m, bool usar_jordan);
+        vector<double> calc_desloc(bool usar_jordan);
+        vector<double> calc_amplitude(bool usar_jordan);
         vector<double> b_vetor;
 
 };

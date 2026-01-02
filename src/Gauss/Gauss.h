@@ -2,6 +2,7 @@
 #define MN_GAUSS_H
 
 #include "../Matrix/Matrix.h"
+#include <stdexcept> 
 
 class Gauss {
     public:

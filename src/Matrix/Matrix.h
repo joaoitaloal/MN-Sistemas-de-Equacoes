@@ -26,7 +26,6 @@ class Matrix {
 
         double at(int x, int y);
         void set(int x, int y, double val);
-        double abs(double x);
         
         void print();
 
