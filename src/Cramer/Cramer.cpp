@@ -27,7 +27,7 @@ double Cramer::calc_det(Matrix& mat, bool usar_jordan){
         return gj.eliminar_gauss();
     }
     else{
-        GaussNormal gn(mat_copia, b_zero);
+        Gauss gn(mat_copia, b_zero);
         return gn.eliminar_gauss();
     }
 }
