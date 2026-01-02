@@ -3,6 +3,7 @@
 
 #include "../Matrix/Matrix.h"
 #include <stdexcept> 
+#include <math.h>
 
 class Gauss {
     public:
@@ -12,11 +13,12 @@ class Gauss {
 
         void print_mat();
         void print_b();
-    protected:
-        virtual void iterar(int i) = 0;
 
+    protected:
         Matrix mat;
         Matrix b;
+
+        virtual int ini_intervalo(int i);
 
 };
 

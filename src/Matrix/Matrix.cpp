@@ -21,18 +21,12 @@ pair<int, int> Matrix::get_size(){
     return matrix_size;
 }
 
-/*void Matriz::switch_col(int x, int y){
-
-}*/
-
 void Matrix::switch_row(int x, int y){
     size_t c = matrix_size.second;
 
     Matrix aux(1, c);
 
     for (size_t i = 0; i < c; i++) {
-        // Esses dois 0 embaixo eram 1 antes, não sei se mudei certo,
-        // se algo der errado por aqui analisar isso ai
         aux.set(0, i, at(x, i));
         set(x, i, at(y, i));
         set(y, i, aux.at(0, i));

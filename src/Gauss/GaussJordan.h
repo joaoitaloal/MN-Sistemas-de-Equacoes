@@ -6,7 +6,9 @@
 class GaussJordan : public Gauss{
     public:
         using Gauss::Gauss;
-        void iterar(int i) override;
+
+    protected:
+        int ini_intervalo(int i) override;
 };
 
 #endif // MN_GAUSSJORDAN_H

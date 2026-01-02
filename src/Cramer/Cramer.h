@@ -1,8 +1,6 @@
 #ifndef MN_CRAMER_H
 #define MN_CRAMER_H
 
-#include "../Matrix/Matrix.h"
-#include "Gauss/GaussNormal.h"
 #include "Gauss/GaussJordan.h"
 
 class Cramer {
