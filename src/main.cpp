@@ -1,12 +1,44 @@
 #include "Gauss/GaussJordan.h"
 
 int main(){
-    // Entrada
+    bool continua = true;
+    int cont = 1;
+    while(continua){
+        cout << "------ Teste " << cont << " ------\n";
+        int n, a;
+        cout << "Digite o número de cordas e o parametro A (N A): ";
+        cin >> n >> a;
+        cout << "\n";
 
-    // Processamento
+        Matrix C(n);
+        cout << "Digite os N x N termos da matriz C: (C11... C1N... CNN): ";
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                int entrada;
+                cin >> entrada;
+                C.set(i, j, entrada);
+            }
+        }
+        cout << "\n";
+
+        Matrix V(n, 1);
+        cout << "Digite os N termos do vetor V: (V11... VN1): ";
+        for(int i = 0; i < n; i++){
+           int entrada;
+           cin >> entrada;
+           C.set(i, 0, entrada);
+        }
+        cout << "\n";
+        // Processamento
 
 
-    // Saída
+        // Saída
 
+        char c;
+        cout << "Você deseja continuar? [S/N]: ";
+        cin >> c;
+        if (c == 'N') continua = false;
+        cout << "\n";
+    }
     return 0;
 }
