@@ -5,7 +5,8 @@ int main(){
     int contador = 1;
     while(continua){
         cout << "-------------------- Teste " << contador << " --------------------\n";
-        int n, a;
+        int n;
+        double a;
         cout << "Digite o número de cordas e o parametro A (N A): ";
         cin >> n >> a;
         cout << "\n";
@@ -14,7 +15,7 @@ int main(){
         cout << "Digite os N x N termos da matriz C: (C11... C1N... CNN): ";
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
-                int entrada;
+                double entrada;
                 cin >> entrada;
                 C.set(i, j, entrada);
             }
