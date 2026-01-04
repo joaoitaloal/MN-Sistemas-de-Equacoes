@@ -7,12 +7,13 @@ int main(){
         cout << "-------------------- Teste " << contador << " --------------------\n";
         int n;
         double a;
-        cout << "Digite o número de cordas e o parametro A (N A): ";
-        cin >> n >> a;
-        cout << "\n";
+        cout << "Digite o número de cordas: ";
+        cin >> n;
+        cout << "Digite o parâmetro A: ";
+        cin >> a;
 
         Matrix C(n);
-        cout << "Digite os N x N termos da matriz C: (C11... C1N... CNN): ";
+        cout << "Digite os N x N termos da matriz C: (C11... C1N... CNN):\n";
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 double entrada;
@@ -20,10 +21,9 @@ int main(){
                 C.set(i, j, entrada);
             }
         }
-        cout << "\n";
 
         Matrix V(n, 1);
-        cout << "Digite os N termos do vetor V: (V11... VN1): ";
+        cout << "Digite os N termos do vetor V: (V11... VN1):\n";
         for(int i = 0; i < n; i++){
             double entrada;
             cin >> entrada;
