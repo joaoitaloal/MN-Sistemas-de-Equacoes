@@ -62,8 +62,7 @@ int main(){
             }
         }
 
-        cout << "DESLOCAMENTOS: ";
-        cout << "[ ";
+        cout << "DESLOCAMENTOS: " << "[ ";
         for (int i = 0; i < deslocamentos.size(); i++){
             cout << deslocamentos[i] << " ";
         }
