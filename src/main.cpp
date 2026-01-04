@@ -27,7 +27,7 @@ int main(){
         for(int i = 0; i < n; i++){
             double entrada;
             cin >> entrada;
-            C.set(i, 0, entrada);
+            V.set(i, 0, entrada);
         }
         cout << "\n";
 
