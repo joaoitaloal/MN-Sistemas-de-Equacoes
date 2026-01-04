@@ -43,13 +43,13 @@ int main(){
         }
 
         cout << "-------------------- DESLOCAMENTOS --------------------" << endl << endl;
-        cout << "[" << endl << endl;
+        cout << "[ ";
         for (int i = 0; i < deslocamentos.size(); i++){
             cout << deslocamentos[i] << " ";
         }
         cout << "]" << endl << endl;
         cout << "-------------------- AMPLITUDES --------------------" << endl << endl;
-        cout << "[" << endl << endl;
+        cout << "[ ";
         for (int i = 0; i < amplitudes.size(); i++){
             cout << amplitudes[i] << " ";
         }
@@ -64,11 +64,13 @@ int main(){
         }
         cout << endl;
 
-        char c;
-        cout << "Voce deseja continuar? [S/N]: ";
-        cin >> c;
-        if (c == 'N') continua = false;
-        cout << "\n";
+        char c = '.';
+        while (c != 'S' && c != 's' && c != 'N' && c != 'n') {
+            cout << "Voce deseja continuar? [S/N]: ";
+            cin >> c;
+            if (c == 'N' || c == 'n') continua = false;
+            cout << "\n";
+        }
 
         contador++;
     }
