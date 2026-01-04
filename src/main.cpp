@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-=======
-#include "Gauss/GaussJordan.h"
->>>>>>> 158fa573d42c94c459b7a4b8fdc2c34b828c25b0
 #include "Cramer/Cramer.h"
 
 int main(){
     bool continua = true;
     int contador = 1;
     while(continua){
-<<<<<<< HEAD
         cout << "-------------------- Teste " << contador << " --------------------" << endl;
         int n;
         double a;
@@ -16,14 +11,6 @@ int main(){
         cin >> n;
         cout << "Digite o parametro A: ";
         cin >> a;
-=======
-        cout << "-------------------- Teste " << contador << " --------------------\n";
-        int n;
-        double a;
-        cout << "Digite o número de cordas e o parametro A (N A): ";
-        cin >> n >> a;
-        cout << "\n";
->>>>>>> 158fa573d42c94c459b7a4b8fdc2c34b828c25b0
 
         Matrix C(n);
         cout << "Digite os N x N termos da matriz C (C11 ... C1N ... CNN):" << endl;
@@ -42,11 +29,7 @@ int main(){
             cin >> entrada;
             V.set(i, 0, entrada);
         }
-<<<<<<< HEAD
         cout << endl;
-=======
-        cout << "\n";
->>>>>>> 158fa573d42c94c459b7a4b8fdc2c34b828c25b0
 
         Cramer cramer(C, V, a);
         vector<double> deslocamentos = cramer.deslocamento_normal();
