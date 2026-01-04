@@ -19,14 +19,14 @@ class Matrix {
 
         //void switch_col(int x, int y);
         void switch_row(int x, int y);
-        
-        void change_col(int x, vector<double> column);
+
+        void change_col(int x, Matrix column);
 
         pair<int, int> get_size();
 
         double at(int x, int y);
         void set(int x, int y, double val);
-        
+
         void print();
 
     protected:

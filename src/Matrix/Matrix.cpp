@@ -33,9 +33,9 @@ void Matrix::switch_row(int x, int y){
     }
 }
 
-void Matrix::change_col(int x, vector<double> column){
+void Matrix::change_col(int x, Matrix column){
     for(int r = 0; r < matrix_size.first; r++){
-        set(r, x, column.at(r));
+        set(r, x, column.at(r, 0));
     }
 }
 

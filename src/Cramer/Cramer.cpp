@@ -1,16 +1,7 @@
 #include "Cramer.h"
 
 Cramer::Cramer(Matrix m, Matrix b, double a)
-: m(m), b(b), a(a), b_vetor(aux(b)){}
-
-
-vector<double> Cramer::aux(Matrix& b){ //recebe a matriz b (dos termos independentes) e transforma em um vetor
-    vector<double> ret;
-    for(int i = 0; i < b.get_size().first; i++){
-        ret.push_back(b.at(i, 0));
-    }
-    return ret;
-}
+: m(m), b(b), a(a){}
 
 double Cramer::calc_det(Matrix& mat, bool usar_jordan){
     //simular o vetor dos termos independentes so com 0 para que
@@ -49,7 +40,7 @@ vector<double> Cramer::calc_desloc(bool usar_jordan){
 
     for(int i = 0 ; i < n ; i++){
         Matrix m_aux = m; //para nao alterar na matriz original
-        m_aux.change_col(i, b_vetor);
+        m_aux.change_col(i, b);
 
         double det_i;
         try{
