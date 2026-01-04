@@ -60,12 +60,12 @@ double Gauss::eliminar_gauss(){
         throw runtime_error("Erro: Sistema com infinitas solucoes");
     }
 
-    double determin;
-    if(num_trocas % 2 == 0) determin = 1;
-    else determin = -1;
+    double determinante;
+    if(num_trocas % 2 == 0) determinante = 1;
+    else determinante = -1;
 
-    for(int i = 0; i < n; i++) determin *= mat.at(i, i);
-    return determin;
+    for(int i = 0; i < n; i++) determinante *= mat.at(i, i);
+    return determinante;
 }
 
 void Gauss::print_mat(){
