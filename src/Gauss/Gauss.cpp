@@ -11,11 +11,11 @@ double Gauss::eliminar_gauss(){
     for (int i = 0; i < n; i++){
         // pivotação
         int maior = i;
-        
+
         for(int j = i + 1; j < n; ++j){
             if (abs(mat.at(j, i)) > abs(mat.at(maior, i))) maior = j;
         }
-        
+
         if (abs(mat.at(maior, i)) < eps){ //evitar divisao por 0 (ou numeros muito proximos)
             throw runtime_error("Erro: Pivo = 0");
         }
@@ -28,14 +28,14 @@ double Gauss::eliminar_gauss(){
 
         // Antigo iterar
         for (int k = ini_intervalo(i); k < n; k++){
-            if(k == i) continue;
+            if(k == i) continue; // Necessário para o Gauss-Jordan
             double x = -mat.at(k, i)/mat.at(i, i);
             mat.set(k, i, 0);
 
             for (int j = i + 1; j < n; j++) {
                 mat.set(k, j, mat.at(k, j) + (x * mat.at(i, j)));
             }
-                
+
             b.set(k, 0, b.at(k, 0) + x * b.at(i, 0));
         }
     }
