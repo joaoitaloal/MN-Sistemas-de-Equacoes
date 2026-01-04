@@ -41,27 +41,6 @@ int main(){
                 rompimentos.push_back(i);
             }
         }
-        cout << "-------------------- DESLOCAMENTOS --------------------" << endl << endl;
-        cout << "[" << endl << endl;
-        for (int i = 0; i < deslocamentos.size(); i++){
-            cout << deslocamentos[i] << " ";
-        }
-        cout << "]" << endl << endl;
-        cout << "-------------------- AMPLITUDES --------------------" << endl << endl;
-        cout << "[" << endl << endl;
-        for (int i = 0; i < amplitudes.size(); i++){
-            cout << amplitudes[i] << " ";
-        }
-        cout << "]" << endl << endl;
-        if (rompimentos.size() > 0){
-            cout << "Há um possível rompimento nas cordas: ";
-            for (int i = 0; i < rompimentos.size(); i++){
-                cout << rompimentos[i] + 1 << " ";
-            }
-        } else {
-            cout << "Todas as cordas estão na margem de segurança." << endl;
-        }
-        cout << endl;
 
         cout << "DESLOCAMENTOS: ";
         cout << "[ ";
