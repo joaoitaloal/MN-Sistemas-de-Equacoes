@@ -37,7 +37,7 @@ int main(){
         vector<double> rompimentos;
 
         for (int i = 0; i < n; i++) {
-            if (amplitudes[i] > 3.0) {
+            if (abs(amplitudes[i]) > 3.0) {
                 rompimentos.push_back(i);
             }
         }

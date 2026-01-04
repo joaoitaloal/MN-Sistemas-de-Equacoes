@@ -67,7 +67,7 @@ vector<double> Cramer::calc_amplitude(bool usar_jordan){
     int n = di.size();
     vector<double> amp(n);
     for(int i = 0 ; i < n ; i++)
-        amp[i] = a*di[i];
+        amp[i] = abs(a*di[i]);
 
     return amp;
 }
