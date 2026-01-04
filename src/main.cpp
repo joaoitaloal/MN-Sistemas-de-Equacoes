@@ -4,7 +4,7 @@ int main(){
     bool continua = true;
     int contador = 1;
     while(continua){
-        cout << "-------------------- Teste " << contador << " --------------------\n";
+        cout << "-------------------- Teste " << contador << " --------------------" << endl;
         int n;
         double a;
         cout << "Digite o numero de cordas: ";
@@ -13,7 +13,7 @@ int main(){
         cin >> a;
 
         Matrix C(n);
-        cout << "Digite os N x N termos da matriz C (C11 ... C1N ... CNN):\n";
+        cout << "Digite os N x N termos da matriz C (C11 ... C1N ... CNN):" << endl;
         for(int i = 0; i < n; i++){
             for(int j = 0; j < n; j++){
                 double entrada;
@@ -23,13 +23,13 @@ int main(){
         }
 
         Matrix V(n, 1);
-        cout << "Digite os N termos do vetor V (V11 ... VN1):\n";
+        cout << "Digite os N termos do vetor V (V11 ... VN1):" << endl;
         for(int i = 0; i < n; i++){
             double entrada;
             cin >> entrada;
             V.set(i, 0, entrada);
         }
-        cout << "\n";
+        cout << endl;
 
         Cramer cramer(C, V, a);
         vector<double> deslocamentos = cramer.deslocamento_normal();
@@ -42,18 +42,20 @@ int main(){
             }
         }
 
-        cout << "-------------------- DESLOCAMENTOS --------------------" << endl << endl;
+        cout << "DESLOCAMENTOS: ";
         cout << "[ ";
         for (int i = 0; i < deslocamentos.size(); i++){
             cout << deslocamentos[i] << " ";
         }
-        cout << "]" << endl << endl;
-        cout << "-------------------- AMPLITUDES --------------------" << endl << endl;
+        cout << "]" << endl;
+        cout << "AMPLITUDES: ";
         cout << "[ ";
         for (int i = 0; i < amplitudes.size(); i++){
             cout << amplitudes[i] << " ";
         }
-        cout << "]" << endl << endl;
+        cout << "]" << endl;
+
+        cout << "ANALISE: ";
         if (rompimentos.size() > 0){
             cout << "Ha um possivel rompimento nas cordas: ";
             for (int i = 0; i < rompimentos.size(); i++){
@@ -62,14 +64,14 @@ int main(){
         } else {
             cout << "Todas as cordas estao na margem de seguranca." << endl;
         }
-        cout << endl;
+        cout << endl << endl;
 
         char c = '.';
         while (c != 'S' && c != 's' && c != 'N' && c != 'n') {
             cout << "Voce deseja continuar? [S/N]: ";
             cin >> c;
             if (c == 'N' || c == 'n') continua = false;
-            cout << "\n";
+            cout << endl;
         }
 
         contador++;
