@@ -1,5 +1,17 @@
 #include "Cramer/Cramer.h"
 
+bool pergunta_continuar() {
+    char c = '.';
+    bool continua = true;
+    while (c != 'S' && c != 's' && c != 'N' && c != 'n') {
+        cout << "Voce deseja continuar? [S/N]: ";
+        cin >> c;
+        if (c == 'N' || c == 'n') continua = false;
+        cout << endl;
+    }
+    return continua;
+}
+
 int main(){
     bool continua = true;
     int contador = 1;
@@ -32,7 +44,15 @@ int main(){
         cout << endl;
 
         Cramer cramer(C, V, a);
-        vector<double> deslocamentos = cramer.deslocamento_normal();
+        vector<double> deslocamentos;
+        try {
+            deslocamentos = cramer.deslocamento_normal();
+        } catch (const exception& e){
+            cout << e.what() << endl << endl;
+            continua = pergunta_continuar();
+            contador++;
+            continue;
+        }
         vector<double> amplitudes = cramer.amplitude_normal();
         vector<double> rompimentos;
 
@@ -66,13 +86,7 @@ int main(){
         }
         cout << endl << endl;
 
-        char c = '.';
-        while (c != 'S' && c != 's' && c != 'N' && c != 'n') {
-            cout << "Voce deseja continuar? [S/N]: ";
-            cin >> c;
-            if (c == 'N' || c == 'n') continua = false;
-            cout << endl;
-        }
+        continua = pergunta_continuar();
 
         contador++;
     }
