@@ -17,7 +17,7 @@ double Gauss::eliminar_gauss(){
         }
 
         if (abs(mat.at(maior, i)) < eps){ //evitar divisao por 0 (ou numeros muito proximos)
-            throw runtime_error("Erro: Pivo = 0");
+            throw runtime_error(string("Erro: O pivo ") + to_string(maior+1) + string("x") + to_string(i+1) + string(" = 0"));
         }
 
         if (maior != i){

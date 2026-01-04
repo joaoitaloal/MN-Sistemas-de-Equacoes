@@ -2,7 +2,6 @@
 #define MN_CRAMER_H
 
 #include "Gauss/GaussJordan.h"
-#include <string>
 
 class Cramer {
     public:

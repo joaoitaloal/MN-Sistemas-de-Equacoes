@@ -2,13 +2,14 @@
 #define MN_GAUSS_H
 
 #include "../Matrix/Matrix.h"
-#include <stdexcept> 
+#include <stdexcept>
 #include <math.h>
+#include <string>
 
 class Gauss {
     public:
         Gauss(Matrix m, Matrix b);
-        
+
         double eliminar_gauss();
 
         void print_mat();
