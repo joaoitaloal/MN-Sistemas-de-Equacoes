@@ -101,7 +101,7 @@ int main(){
         cout << endl;
         
         cout << "DESLOCAMENTOS: " << "[ ";
-        for (int i = 0; i < deslocamentos_normal.size(); i++){
+        for (size_t i = 0; i < deslocamentos_normal.size(); i++){
             cout << deslocamentos_normal[i] << " ";
         }
         cout << "]" << endl;
@@ -109,7 +109,7 @@ int main(){
 
         cout << "AMPLITUDES: ";
         cout << "[ ";
-        for (int i = 0; i < amplitudes_normal.size(); i++){
+        for (size_t i = 0; i < amplitudes_normal.size(); i++){
             cout << amplitudes_normal[i] << " ";
         }
         cout << "]" << endl;
@@ -118,7 +118,7 @@ int main(){
         cout << "ANALISE: ";
         if (rompimentos_normal.size() > 0){
             cout << "Ha um possivel rompimento nas cordas: ";
-            for (int i = 0; i < rompimentos_normal.size(); i++){
+            for (size_t i = 0; i < rompimentos_normal.size(); i++){
                 cout << rompimentos_normal[i] + 1 << " ";
             }
         } else {
@@ -137,7 +137,7 @@ int main(){
         cout << endl;
 
         cout << "DESLOCAMENTO: " << "[ ";
-        for (int i = 0; i < deslocamentos_jordan.size(); i++){
+        for (size_t i = 0; i < deslocamentos_jordan.size(); i++){
             cout << deslocamentos_jordan[i] << " ";
         }
         cout << "]" << endl;
@@ -145,7 +145,7 @@ int main(){
 
         cout << "AMPLITUDES: ";
         cout << "[ ";
-        for (int i = 0; i < amplitudes_jordan.size(); i++){
+        for (size_t i = 0; i < amplitudes_jordan.size(); i++){
             cout << amplitudes_jordan[i] << " ";
         }
         cout << "]" << endl;
@@ -154,7 +154,7 @@ int main(){
         cout << "ANALISE: ";
         if (rompimentos_jordan.size() > 0){
             cout << "Ha um possivel rompimento nas cordas: ";
-            for (int i = 0; i < rompimentos_jordan.size(); i++){
+            for (size_t i = 0; i < rompimentos_jordan.size(); i++){
                 cout << int(rompimentos_jordan[i] + 1) << " ";
             }
         } else {

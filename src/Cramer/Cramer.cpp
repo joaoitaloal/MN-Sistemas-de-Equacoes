@@ -47,7 +47,7 @@ vector<double> Cramer::calc_desloc(bool usar_jordan){
     }
 
     if (abs(det) < 1e-12) {
-        throw runtime_error("Erro: determinante = 0");
+        throw runtime_error("Erro: a determinante é aproximadamente igual a 0");
     }
 
     for(int i = 0 ; i < n ; i++){

@@ -17,7 +17,7 @@ double Gauss::eliminar_gauss(){
         }
 
         if (abs(mat.at(maior, i)) < eps){ //evitar divisao por 0 (ou numeros muito proximos)
-            throw runtime_error(string("Erro: Pivo da coluna ") + to_string(i+1) + string(" tem valor 0."));
+            throw runtime_error(string("Erro: Pivo da coluna ") + to_string(i+1) + string(" tem valor aproximadamente igual a 0."));
         }
 
         if (maior != i){
