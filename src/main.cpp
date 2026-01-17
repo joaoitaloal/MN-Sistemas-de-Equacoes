@@ -13,10 +13,12 @@ bool pergunta_continuar() {
 }
 
 int main(){
+    cout << "// ========== Trabalho de Metodos Numericos ========== //" << endl << endl;
+    
     bool continua = true;
     int contador = 1;
     while(continua){
-        cout << "-------------------- Teste " << contador << " --------------------" << endl;
+        cout << "========== Teste " << contador << " ==========" << endl;
         int n;
         double a;
         cout << "Digite o numero de cordas: ";
@@ -43,45 +45,120 @@ int main(){
         }
         cout << endl;
 
+        cout << "---------- Valores de Entrada ----------" << endl;
+        cout << "Matriz [C]: " << endl;
+        C.print();
+        cout << endl;
+
+        cout << "Vetor {v}" << endl;
+        V.print();
+        cout << endl;
+
+        cout << "A = " + to_string(a) << endl << endl; 
+
         Cramer cramer(C, V, a);
-        vector<double> deslocamentos;
+        vector<double> deslocamentos_normal;
+        vector<double> deslocamentos_jordan;
         try {
-            deslocamentos = cramer.deslocamento_normal();
+            deslocamentos_normal = cramer.deslocamento_normal();
+            deslocamentos_jordan = cramer.deslocamento_jordan();
         } catch (const exception& e){
             cout << e.what() << endl << endl;
             continua = pergunta_continuar();
             contador++;
             continue;
         }
-        vector<double> amplitudes = cramer.amplitude_normal();
-        vector<double> rompimentos;
+        vector<double> amplitudes_normal = cramer.amplitude_normal();
+        vector<double> amplitudes_jordan = cramer.amplitude_jordan();
+
+        vector<double> rompimentos_normal;
+        vector<double> rompimentos_jordan;
 
         for (int i = 0; i < n; i++) {
-            if (amplitudes[i] > 3.0) {
-                rompimentos.push_back(i);
+            if (amplitudes_normal[i] > 3.0) {
+                rompimentos_normal.push_back(i);
             }
         }
 
+        for (int i = 0; i < n; i++) {
+            if (amplitudes_jordan[i] > 3.0) {
+                rompimentos_jordan.push_back(i);
+            }
+        }
+
+        // Resultados
+
+        cout << "// ---------- Resultados ---------- //" << endl << endl;
+
+        // Gauss
+        cout << "---------- Gauss normal ----------" << endl;
+        cout << "Matriz [C] final de Gauss: " << endl;
+        cramer.print_matrix_gauss();
+        cout << endl;
+        
+        cout << "Vetor {v} final de Gauss: " << endl;
+        cramer.print_b_gauss();
+        cout << endl;
+        
         cout << "DESLOCAMENTOS: " << "[ ";
-        for (int i = 0; i < deslocamentos.size(); i++){
-            cout << deslocamentos[i] << " ";
+        for (int i = 0; i < deslocamentos_normal.size(); i++){
+            cout << deslocamentos_normal[i] << " ";
         }
         cout << "]" << endl;
+        cout << endl;
+
         cout << "AMPLITUDES: ";
         cout << "[ ";
-        for (int i = 0; i < amplitudes.size(); i++){
-            cout << amplitudes[i] << " ";
+        for (int i = 0; i < amplitudes_normal.size(); i++){
+            cout << amplitudes_normal[i] << " ";
         }
         cout << "]" << endl;
+        cout << endl;
 
         cout << "ANALISE: ";
-        if (rompimentos.size() > 0){
+        if (rompimentos_normal.size() > 0){
             cout << "Ha um possivel rompimento nas cordas: ";
-            for (int i = 0; i < rompimentos.size(); i++){
-                cout << rompimentos[i] + 1 << " ";
+            for (int i = 0; i < rompimentos_normal.size(); i++){
+                cout << rompimentos_normal[i] + 1 << " ";
             }
         } else {
-            cout << "Todas as cordas estao na margem de seguranca." << endl;
+            cout << "Para o metodo de Gauss normal, todas as cordas estao na margem de seguranca." << endl;
+        }
+        cout << endl << endl;
+
+        // Jordan
+        cout << "---------- Gauss-Jordan ----------" << endl;
+        cout << "Matriz [C] final de Jordan: " << endl;
+        cramer.print_matrix_jordan();
+        cout << endl;
+        
+        cout << "Vetor {v} final de Jordan: " << endl;
+        cramer.print_b_jordan();
+        cout << endl;
+
+        cout << "DESLOCAMENTO: " << "[ ";
+        for (int i = 0; i < deslocamentos_jordan.size(); i++){
+            cout << deslocamentos_jordan[i] << " ";
+        }
+        cout << "]" << endl;
+        cout << endl;
+
+        cout << "AMPLITUDES: ";
+        cout << "[ ";
+        for (int i = 0; i < amplitudes_jordan.size(); i++){
+            cout << amplitudes_jordan[i] << " ";
+        }
+        cout << "]" << endl;
+        cout << endl;
+
+        cout << "ANALISE: ";
+        if (rompimentos_jordan.size() > 0){
+            cout << "Ha um possivel rompimento nas cordas: ";
+            for (int i = 0; i < rompimentos_jordan.size(); i++){
+                cout << int(rompimentos_jordan[i] + 1) << " ";
+            }
+        } else {
+            cout << "Para o metodo de Gauss-Jordan, todas as cordas estao na margem de seguranca." << endl;
         }
         cout << endl << endl;
 

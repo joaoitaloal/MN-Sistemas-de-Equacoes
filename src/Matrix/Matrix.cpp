@@ -15,6 +15,10 @@ Matrix::Matrix(vector<vector<double>> matrix_){
     matrix_size = {matrix.size(), matrix.at(0).size()};
 }
 
+Matrix::Matrix(){
+    matrix_size = {0, 0};
+}
+
 // first: linhas
 // second: colunas
 pair<int, int> Matrix::get_size(){

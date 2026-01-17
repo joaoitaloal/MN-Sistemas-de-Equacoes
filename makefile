@@ -25,5 +25,5 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
 clean:
 	rm -f $(OBJ) $(DEP) $(BUILD_DIR)/$(TARGET)
 
-run:
+run: all
 	$(BUILD_DIR)/$(TARGET)

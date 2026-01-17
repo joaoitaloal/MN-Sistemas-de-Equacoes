@@ -1,7 +1,7 @@
 #include "Cramer.h"
 
 Cramer::Cramer(Matrix m, Matrix b, double a)
-: m(m), b(b), a(a){}
+: m(m), b(b), a(a) {}
 
 double Cramer::calc_det(Matrix& mat, bool usar_jordan){
     //simular o vetor dos termos independentes so com 0 para que
@@ -15,11 +15,23 @@ double Cramer::calc_det(Matrix& mat, bool usar_jordan){
 
     if(usar_jordan){
         GaussJordan gj(mat_copia, b_zero);
-        return gj.eliminar_gauss();
+
+        double result = gj.eliminar_gauss();
+
+        jordan_mat = gj.get_mat();
+        jordan_b = gj.get_b();
+
+        return result;
     }
     else{
         Gauss gn(mat_copia, b_zero);
-        return gn.eliminar_gauss();
+
+        double result = gn.eliminar_gauss();
+
+        gauss_mat = gn.get_mat();
+        gauss_b = gn.get_b();
+
+        return result;
     }
 }
 
@@ -78,4 +90,20 @@ vector<double> Cramer::amplitude_normal(){
 
 vector<double> Cramer::amplitude_jordan(){
     return calc_amplitude(true);
+}
+
+void Cramer::print_matrix_gauss(){
+    gauss_mat.print();
+}
+
+void Cramer::print_matrix_jordan(){
+    jordan_mat.print();
+}
+
+void Cramer::print_b_gauss(){
+    gauss_b.print();
+}
+
+void Cramer::print_b_jordan(){
+    jordan_b.print();
 }

@@ -15,6 +15,10 @@ class Gauss {
         void print_mat();
         void print_b();
 
+        // Cópias
+        Matrix get_mat();
+        Matrix get_b();
+
     protected:
         Matrix mat;
         Matrix b;

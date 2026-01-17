@@ -17,6 +17,8 @@ class Matrix {
         // Copia todo o vetor de entrada
         Matrix(vector <vector <double>> matrix_);
 
+        Matrix();
+
         //void switch_col(int x, int y);
         void switch_row(int x, int y);
 

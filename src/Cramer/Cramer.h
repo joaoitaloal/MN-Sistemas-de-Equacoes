@@ -13,10 +13,22 @@ class Cramer {
         vector<double> deslocamento_jordan();
         vector<double> amplitude_jordan();
 
+        void print_matrix_gauss();
+        void print_matrix_jordan();
+
+        void print_b_gauss();
+        void print_b_jordan();
+
     protected:
         Matrix m;
         Matrix b;
         double a;
+
+        Matrix gauss_mat;
+        Matrix gauss_b;
+
+        Matrix jordan_mat;
+        Matrix jordan_b;
 
         double calc_det(Matrix& m, bool usar_jordan);
         vector<double> calc_desloc(bool usar_jordan);
