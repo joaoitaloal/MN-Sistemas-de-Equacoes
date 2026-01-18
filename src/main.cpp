@@ -119,7 +119,7 @@ int main(){
         if (rompimentos_normal.size() > 0){
             cout << "Ha um possivel rompimento nas cordas: ";
             for (size_t i = 0; i < rompimentos_normal.size(); i++){
-                cout << rompimentos_normal[i] + 1 << " ";
+                cout << int(rompimentos_normal[i] + 1) << " ";
             }
         } else {
             cout << "Para o metodo de Gauss normal, todas as cordas estao na margem de seguranca." << endl;

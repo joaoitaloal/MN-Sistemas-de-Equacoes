@@ -6,15 +6,9 @@ Cramer::Cramer(Matrix m, Matrix b, double a)
 double Cramer::calc_det(Matrix& mat, bool usar_jordan){
     //simular o vetor dos termos independentes so com 0 para que
     //so a matriz de coeficientes determine inconsistencias
-    int n = mat.get_size().first;
-    Matrix b_zero(n, 1);
-    for (int i = 0; i < n; i++)
-        b_zero.set(i, 0, 0.0);
-
-    Matrix mat_copia = mat;
 
     if(usar_jordan){
-        GaussJordan gj(mat_copia, b_zero);
+        GaussJordan gj(mat, b);
 
         double result = gj.eliminar_gauss();
 
@@ -24,7 +18,7 @@ double Cramer::calc_det(Matrix& mat, bool usar_jordan){
         return result;
     }
     else{
-        Gauss gn(mat_copia, b_zero);
+        Gauss gn(mat, b);
 
         double result = gn.eliminar_gauss();
 
