@@ -12,19 +12,13 @@ double Cramer::calc_det(Matrix& mat, bool usar_jordan){
 
         double result = gj.eliminar_gauss();
 
-        jordan_mat = gj.get_mat();
-        jordan_b = gj.get_b();
-
         return result;
     }
     else{
         Gauss gn(mat, b);
 
         double result = gn.eliminar_gauss();
-
-        gauss_mat = gn.get_mat();
-        gauss_b = gn.get_b();
-
+        
         return result;
     }
 }
@@ -35,7 +29,20 @@ vector<double> Cramer::calc_desloc(bool usar_jordan){
 
     double det;
     try {
-        det = calc_det(m, usar_jordan);
+        if(usar_jordan){
+            GaussJordan gj(m, b);
+
+            det = gj.eliminar_gauss();
+            jordan_mat = gj.get_mat();
+            jordan_b = gj.get_b();
+        }
+        else{
+            Gauss gn(m, b);
+
+            det = gn.eliminar_gauss();
+            gauss_mat = gn.get_mat();
+            gauss_b = gn.get_b();
+        }
     } catch (const exception& e) {
         throw runtime_error(string("Falha ao calcular det(C): ") + e.what());
     }
